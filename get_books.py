@@ -31,3 +31,11 @@ def search_book(books:list[dict[str,str|int|bool]], name:str)->dict[str,str|int|
     else:
         return None
 
+def get_available_books(books:list[dict[str,str|int|bool]])->list[dict[str,str|int|bool]]:
+    available_book_list:list[dict[str,str|int|bool]] = []
+    for book in books:
+        book_available = book["available"]
+        if book_available:
+            available_book_list.append(book)
+    return available_book_list
+  
