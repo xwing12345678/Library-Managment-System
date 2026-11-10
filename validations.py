@@ -39,4 +39,3 @@ def book_in_library(book:dict, search_term:str)->bool:
     if search_term.strip().lower() in book_name:
         result = True
     return result
-
