@@ -1,4 +1,4 @@
-from validations import is_non_empty_string,book_in_library, get_non_empty_input
+from validations import is_non_empty_string,search_term_in_name, get_non_empty_input,is_author
 from books import books
 
 def display_books(books:list[dict[str,str|int|bool]])->None:
@@ -20,7 +20,7 @@ def search_book(books:list[dict[str,str|int|bool]], name:str)->dict[str,str|int|
     result_list:list = []
     first_result:dict = {}
     for book in books:
-        if book_in_library(book,name):
+        if search_term_in_name(book,name):
             result_list.append(book)
             if not first_result:
                 first_result = book
@@ -39,13 +39,6 @@ def get_available_books(books:list[dict[str,str|int|bool]])->list[dict[str,str|i
             available_book_list.append(book)
     return available_book_list
 
-def is_author(book:dict, author:str)->bool:
-    result = False
-    book_author:str = book["author"].strip().lower()
-    if author.strip().lower() in book_author:
-        result = True
-    return result
-
 def get_books_by_author(books:list[dict[str,str|int|bool]], author:str)->list[dict[str,str|int|bool]]:
     result_list:list = []
     if not is_non_empty_string(author):
@@ -60,5 +53,6 @@ def books_by_author_flow(books):
     user_input = get_input(message)
     print(get_books_by_author(books,user_input))
 
+    
 
   

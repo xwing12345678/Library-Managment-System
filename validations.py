@@ -33,7 +33,7 @@ def get_non_empty_input(message:str)->str:
         non_empty_choice = True
     return user_input
 
-def book_in_library(book:dict, search_term:str)->bool:
+def search_term_in_name(book:dict, search_term:str)->bool:
     result = False
     book_name:str = book["name"].strip().lower()
     if search_term.strip().lower() in book_name:
@@ -49,3 +49,41 @@ def is_positive_int(number:int)->bool:
     result = True
     return result
 
+def is_author(book:dict, author:str)->bool:
+    result = False
+    book_author:str = book["author"].strip().lower()
+    if author.strip().lower() == book_author:
+        result = True
+    return result
+
+def is_title(book:dict, title:str)->bool:
+    result = False
+    book_title:str = book["name"].strip().lower()
+    if title.strip().lower() == book_title:
+        result = True
+    return result
+
+def is_book(book:dict,title:str,author:str)->bool:
+    result = False
+    if is_title(book,title) and is_author(book,author):
+        result = True
+        return result
+    return result
+
+def is_available(book:dict)->bool:
+    result:bool = False
+    availability:bool = book["available"]
+    if availability == True:
+        result = True
+    return result
+
+def book_in_library(books:list[dict[str,str|int|bool]],title:str, author:str)->bool:
+    result = False
+    for book in books:
+        if is_book(book,title,author):
+            result = True
+            return result
+    return result
+
+    
+    
