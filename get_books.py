@@ -1,4 +1,4 @@
-from validations import is_non_empty_string,search_term_in_name, get_non_empty_input,is_author
+from validations import is_non_empty_string,search_term_in_name, id_in_library,is_author
 from books import books
 
 def display_books(books:list[dict[str,str|int|bool]])->None:
@@ -52,6 +52,19 @@ def books_by_author_flow(books):
     message:str = 'Enter an author name: ' 
     user_input = get_input(message)
     print(get_books_by_author(books,user_input))
+
+def get_book_by_id(books:list[dict[str,str|int|bool]],id:int)->dict|None:
+    if not id_in_library(books,id):
+        return None
+    for book in books:
+        book_id = book["id"]
+        if book_id == id:
+            return book
+    return None
+
+
+    
+
 
     
 

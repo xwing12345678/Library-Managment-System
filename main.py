@@ -1,7 +1,7 @@
 from books import books
 import validations as v
 from get_books import display_books, book_name_flow,get_available_books, books_by_author_flow
-from set_books import add_book_flow
+from set_books import add_book_flow, borrow_flow
 valid_menu_choices:list[str] = [str(integer) for integer in range(1,9)]
 
 main_menu_message = '''
@@ -32,7 +32,8 @@ def main():
               add_book_flow(books)
 
         elif choice == '4':
-                    print("Not implemented yet! Chose another option!")
+            borrow_flow(books)
+        
         elif choice == '5':
                     print("Not implemented yet! Chose another option!")
 

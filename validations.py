@@ -39,6 +39,7 @@ def search_term_in_name(book:dict, search_term:str)->bool:
         result = True
     return result
 
+
 def is_positive_int(number:int)->bool:
     result:bool = False
     if not isinstance(number,int) or isinstance(number,bool):
@@ -69,8 +70,10 @@ def is_book(book:dict,title:str,author:str)->bool:
         return result
     return result
 
-def is_available(book:dict)->bool:
+def is_available(book:dict|None)->bool:
     result:bool = False
+    if not book:
+        return False
     availability:bool = book["available"]
     if availability == True:
         result = True
