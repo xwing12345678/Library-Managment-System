@@ -73,7 +73,7 @@ def add_book(books:list[dict[str,str|int|bool]] , name:str, author:str,year:int)
         return False
     if not is_positive_int(year):
         return False
-    if book_in_library(books,name,author)
+    if book_in_library(books,name,author):
         return False
     books.append({ "id": get_next_book_id(books),"name": name, "author": author, "year": year,"available": True})
     return True
