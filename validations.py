@@ -39,3 +39,13 @@ def book_in_library(book:dict, search_term:str)->bool:
     if search_term.strip().lower() in book_name:
         result = True
     return result
+
+def is_positive_int(number:int)->bool:
+    result:bool = False
+    if not isinstance(number,int) or isinstance(number,bool):
+        return result
+    if not number > 0:
+        return result
+    result = True
+    return result
+
