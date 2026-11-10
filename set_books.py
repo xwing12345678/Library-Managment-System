@@ -1,6 +1,6 @@
 from books import books
 from get_books import get_input
-from validations import is_non_empty_string, is_positive_int
+from validations import is_non_empty_string, is_positive_int,book_in_library
 
 def get_next_book_id(books:list[dict[str,str|int|bool]] )->int:
     unique_id = False
@@ -28,7 +28,8 @@ def add_book(books:list[dict[str,str|int|bool]] , name:str, author:str,year:int)
         return False
     if not is_positive_int(year):
         return False
-        
+    if book_in_library(books,name,author)
+        return False
     books.append({ "id": get_next_book_id(books),"name": name, "author": author, "year": year,"available": True})
     return True
 
