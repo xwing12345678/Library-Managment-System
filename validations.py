@@ -1,7 +1,6 @@
 from books import books
 valid_menu_choices:list[str] = [str(integer) for integer in range(1,9)]
 
-
 def is_non_empty_string(raw_string:str)->bool:
     result:bool = False
     if raw_string.strip():
@@ -77,6 +76,14 @@ def is_available(book:dict)->bool:
         result = True
     return result
 
+def is_book_id(book:dict,id:int)->bool:
+    if not is_positive_int(id):
+        return False
+    book_id = book["id"]
+    if id == book_id:
+        return True
+    return False 
+
 def book_in_library(books:list[dict[str,str|int|bool]],title:str, author:str)->bool:
     result = False
     for book in books:
@@ -85,5 +92,11 @@ def book_in_library(books:list[dict[str,str|int|bool]],title:str, author:str)->b
             return result
     return result
 
-    
+def id_in_library(books:list[dict[str,str|int|bool]],id:int)->bool:
+    result = False
+    for book in books:
+        if is_book_id(book,id):
+            result = True
+            return result
+    return result    
     

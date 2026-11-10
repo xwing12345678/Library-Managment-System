@@ -16,7 +16,8 @@ def get_next_book_id(books:list[dict[str,str|int|bool]] )->int:
     return next_id
 
 def borrow_book(books:list[dict[str,str|int|bool]] , book_id:int)->bool:
-    return False
+    
+    
 
 def return_book(books:list[dict[str,str|int|bool]] , book_id:int)->bool:
     return False
