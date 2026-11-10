@@ -23,10 +23,10 @@ def borrow_book(books:list[dict[str,str|int|bool]], book_id:int)->bool:
     for book in books:
         if is_book_id(book,book_id):
             book["available"] = False
-        return True
+            return True
     return False
         
-def borrow_flow(books)->None:
+def borrow_flow(books:list)->None:
     book_id = get_input("Enter the book_id of the book you want to borrow: ")
     if not is_non_empty_string(book_id):
         print("Empty selection!")
@@ -40,9 +40,32 @@ def borrow_flow(books)->None:
     else:
         print("You did not enter a valid id of an available book.")
 
-def return_book(books:list[dict[str,str|int|bool]] , book_id:int)->bool:
+def return_book(books:list[dict[str,str|int|bool]] , book_id:int)->bool:    
+    if not id_in_library(books,book_id):
+            return False
+    if is_available(get_book_by_id(books,book_id)): 
+            return False
+    for book in books:
+        if is_book_id(book,book_id):
+            book["available"] = True
+            return True
     return False
 
+def return_flow(books:list)->None:
+    book_id = get_input("Enter the book_id of the book you want to return: ")
+    if not is_non_empty_string(book_id):
+        print("Empty selection!")
+        return None
+    if not book_id.isdigit():
+        print ("This is not something that can be converted to an integer! ")
+        return None
+    result = return_book(books,int(book_id))
+    if result == True:
+        print("You have successfully returned the book!")
+    else:
+        print("You did not enter a valid id of an borrowed book.")
+
+    
 def add_book(books:list[dict[str,str|int|bool]] , name:str, author:str,year:int)->bool:
     if not is_non_empty_string(name):
         return False
